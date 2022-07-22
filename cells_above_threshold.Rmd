@@ -1,0 +1,111 @@
+---
+title: "<center>**... in R**</center>"
+author: "<center>Wyclife Agumba Oluoch (wyclifeoluoch@gmail.com) </center>"
+date: "<center>`r Sys.time()`</center>"
+bibliography: 
+  - bib/packages.bib
+nocite: '@*'
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    theme: darkly
+    #highlight: pygments
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libs, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
+packages <- c("base",
+              'knitr',
+              'rmarkdown',
+              'prettydoc',
+              'raster')
+installed_packages <- packages %in% rownames(installed.packages())
+if(any(installed_packages == FALSE)){
+  install.packages(packages[!installed_packages])
+}
+lapply(packages, library, character.only = TRUE) |> invisible()
+```
+
+```{r write_bib, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
+knitr::write_bib(c(
+  .packages(), packages
+), 'bib/packages.bib')
+```
+
+# About 
+
+Sometimes it is important to know the number/proportion of cells in a raster that meet a certain threshold. This can easily be done as follows:
+
+## Creating sample raster
+
+```{r}
+set.seed(123)
+r <- raster(nrow = 10, ncol = 10) # Creates the raster.
+r[] <- rnorm(1:ncell(r)) # Fills the raster with random values around 0.
+plot(r) # Visualizes the raster.
+```
+
+## Count number of cells in the raster
+
+```{r}
+ncell(r) # Counts the number of cells in the raster.
+```
+
+## Count cells with values above 0.3
+
+```{r}
+sum(r[] > 0.3) # Returns sum of number of cells with pixel values above 0.3.
+```
+
+## Get proportion of cells with pixel values above 0.3
+
+```{r}
+sum(r[] > 0.3) / ncell(r) # Divides sum of cells above 0.3 by total number of cells.
+```
+
+## As a percentage
+
+```{r}
+print(paste0(sum(r[] > 0.3) / ncell(r) * 100, '%')) 
+```
+
+## Application
+
+Let's assume our raster showed suitability scores of our study area for a specific species. So, we are aware that `r sum(r[] > 0.3) / ncell(r) * 100` % of our predicted area is suitable for the species. This value is normally useful when working around significance of the built model before interpreting results.
+
+## References
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
