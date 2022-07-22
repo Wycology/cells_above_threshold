@@ -53,7 +53,7 @@ plot(r) # Visualizes the raster.
 ncell(r) # Returns the number of cells in the raster.
 ```
 
-## Count cells with values above 0.3
+## Count cells with values > 0.3
 
 ```{r}
 sum(r[] > 0.3) # Returns sum of number of cells with pixel values above 0.3.
