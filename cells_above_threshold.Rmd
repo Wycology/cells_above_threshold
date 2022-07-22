@@ -50,7 +50,7 @@ plot(r) # Visualizes the raster.
 ## Count number of cells in the raster
 
 ```{r}
-ncell(r) # Counts the number of cells in the raster.
+ncell(r) # Returns the number of cells in the raster.
 ```
 
 ## Count cells with values above 0.3
