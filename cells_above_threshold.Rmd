@@ -34,7 +34,7 @@ lapply(packages, library, character.only = TRUE) |> invisible()
 knitr::write_bib(c(.packages(), packages), 'bib/packages.bib')
 ```
 
-# About 
+## About 
 
 Sometimes it is important to know the number/proportion of cells in a raster that meet a certain threshold. This can easily be done as follows:
 
