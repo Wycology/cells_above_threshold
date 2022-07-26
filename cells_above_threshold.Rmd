@@ -36,7 +36,7 @@ knitr::write_bib(c(.packages(), packages), 'bib/packages.bib')
 
 ## About 
 
-t is important to know the number/proportion of cells in a raster that meet a certain threshold. This can easily be done as follows:
+It is important to know the number/proportion of cells in a raster that meet a certain threshold. This can easily be done as follows:
 
 ## Creating a sample raster
 
